@@ -2,15 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.terradue.ciop.app</groupId>
-  <artifactId>beam-meris-ac</artifactId>
+  <artifactId>Participant-B</artifactId>
   <packaging>rpm</packaging>
-  <name>beam-meris-ac</name>
+  <name>${project.artifactId}</name>
   <description>BEAM Atmospheric Correction Processing</description>
   <version>0.21-SNAPSHOT</version>
   <scm>
-    <connection>scm:git:git@github.com:ocean-color-ac-challenge/beam-meris-ac.git</connection>
-    <developerConnection>scm:git:git@github.com:ocean-color-ac-challenge/beam-meris-ac.git</developerConnection>
-    <url>https://github.com/ocean-color-ac-challenge/beam-meris-ac</url>
+    <connection>scm:git:git@github.com:ocean-color-ac-challenge/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:ocean-color-ac-challenge/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/ocean-color-ac-challenge/${project.artifactId}</url>
     <tag>HEAD</tag>
   </scm>
   <dependencies>
@@ -42,6 +42,11 @@
     <dependency>
       <groupId>org.esa.beam</groupId>
       <artifactId>beam-meris-smac</artifactId>
+      <version>5.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.esa.beam</groupId>
+      <artifactId>beam-pixel-extraction</artifactId>
       <version>5.0</version>
     </dependency>
     <dependency>
@@ -129,8 +134,8 @@ def writer = new FileWriter(new File("/application/properties.xml"))
 def xml = new MarkupBuilder(writer)
 xml.mkp.xmlDeclaration(version: "1.0", encoding: "utf-8")
 xml.properties() {
-github_repository(version:pom.version, pom.artifactId)
-user_reference(env['USER'])
+  github_repository(version:pom.version, pom.artifactId)
+  user_reference(env['USER'])
 }
 </source>
             </configuration>
@@ -263,8 +268,8 @@ user_reference(env['USER'])
           <distribution>Terradue ${project.inceptionYear}</distribution>
           <group>air</group>
           <packager>Terradue</packager>
-          <summary>ESA BEAM Toolbox atmospheric correction</summary>
-          <description/>
+          <summary>${project.artifactId}</summary>
+          <description>${project.artifactId}</description>
           <name>${project.artifactId}</name>
           <defaultDirmode>775</defaultDirmode>
           <defaultFilemode>664</defaultFilemode>
@@ -355,7 +360,7 @@ user_reference(env['USER'])
       <plugin>
         <groupId>de.jutzig</groupId>
         <artifactId>github-release-plugin</artifactId>
-        <version>1.0.3</version>
+        <version>1.1.1-dns</version>
         <executions>
           <execution>
             <id>github-upload</id>
