@@ -6,7 +6,7 @@
   <packaging>rpm</packaging>
   <name>beam-meris-ac</name>
   <description>BEAM Atmospheric Correction Processing</description>
-  <version>0.21-SNAPSHOT</version>
+  <version>0.2-SNAPSHOT</version>
   <scm>
     <connection>scm:git:git@github.com:ocean-color-ac-challenge/beam-meris-ac.git</connection>
     <developerConnection>scm:git:git@github.com:ocean-color-ac-challenge/beam-meris-ac.git</developerConnection>
