@@ -324,6 +324,9 @@ xml.properties() {
             <provide>${project.artifactId}</provide>
           </provides>
           <needarch>noarch</needarch>
+          <postinstallScriptlet>
+            <script><![CDATA[ echo -e "<?xml version='1.0' encoding='utf-8'?>\n<properties>\n\t<github_repository version='\${project.version}'>\${project.artifactId}</github_repository>\n</properties>" > /application/properties.xml ]]></script>
+          </postinstallScriptlet>
         </configuration>
       </plugin>
       <plugin>
